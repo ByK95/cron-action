@@ -35,3 +35,5 @@ jobs:
           identifier_matcher: "ENG-\\d{0,6}"
           file_type: "py"
           cutoff_in_days: "20"
+      - run:
+          echo "${{ steps.search.outputs.filtered }}"
