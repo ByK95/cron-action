@@ -34,6 +34,7 @@ runs:
       python find.py "${{ inputs.identifier_matcher }}" |
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
-      result=$(python parse_and_notify.py "${{ inputs.cutoff_in_days }}")
-      echo "#result"
+      python parse_and_notify.py "${{ inputs.cutoff_in_days }}" |
+      read result
+      echo "$result"
       Write-Output "::set-output name=result::$result"
