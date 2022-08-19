@@ -21,10 +21,15 @@ if __name__ == '__main__':
     times = [datetime.strptime(time, "%a %b %d %H:%M:%S %Y %z") for time in times]
     tasks = [task.replace('\n', '') for task in lines[size:]]
 
+    filtered = []
+    expired = []
     NOW = datetime.now(timezone.utc)
     for index, time in enumerate(times):
-        print(tasks[index], times[index])
+        filtered.append("{} {}".format(tasks[index], times[index]))
         timediff = NOW - time
         if timediff > CUTOFF:
-            print("Findings that have passed cutoff time", tasks[index], times[index])
+            expired.append("{} {}".format(tasks[index], times[index]))
             send_slack_notification(tasks[index])
+
+    print("::set-output name=filtered::{}".format("\n".join(filtered)))
+    print("::set-output name=expired::{}".format("\n".join(expired)))
