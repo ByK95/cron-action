@@ -13,5 +13,5 @@ runs:
   - name: Find Usages
     shell: bash
     run: |
-    git grep -E "is_upcoming_features_enabled\('ENG-[0-9]{0,6}'\)" -- '*.py' |
-    python ../main.py
+      git grep -E "is_upcoming_features_enabled\('ENG-[0-9]{0,6}'\)" -- '*.py'
+      python ../main.py
