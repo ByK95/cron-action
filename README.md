@@ -14,3 +14,10 @@ jobs:
           file_type: "py"
           cutoff_in_days: "20"
 ```
+
+```commandline
+matcher: ${{ inputs.matcher }}
+identifier_matcher: ${{ inputs.identifier_matcher }}
+file_type: ${{ inputs.file_type }}
+cutoff_in_days: ${{ inputs.cutoff_in_days }}
+```

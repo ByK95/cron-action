@@ -17,6 +17,8 @@ inputs:
     required: true
     description: "date parameter that will notify should be int value as string "
     type: string
+  outputs:
+    results: ${{ steps.search.outputs.result }}
 runs:
   using: "composite"
   steps:
@@ -31,4 +33,8 @@ runs:
       python find.py "${{ inputs.identifier_matcher }}" |
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
-      python parse_and_notify.py "${{ inputs.cutoff_in_days }}"
+      result=`python parse_and_notify.py "${{ inputs.cutoff_in_days }}"`
+  - name: Assign results
+    id: search
+    shell: bash
+    run: echo "::set-output name=result::$var"
