@@ -1,0 +1,12 @@
+name: "Find Ongoing Feature Flags"
+inputs:
+  matcher:
+    required: true
+runs:
+  using: "composite"
+  steps:
+  - uses: actions/checkout@v3
+  - uses: actions/setup-python@v4
+    with:
+      python-version: '3.10'
+  - run: python my_script.py

@@ -1,0 +1,17 @@
+name: "Find Ongoing Feature Flags"
+
+on:
+  push:
+  workflow_call:
+    inputs:
+      matcher:
+        required: true
+        type: string
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/find-ongoing-feature-flags
+        with:
+          matcher: ${{ inputs.matcher }}
