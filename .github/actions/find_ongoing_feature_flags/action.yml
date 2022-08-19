@@ -3,6 +3,7 @@ description: ""
 inputs:
   matcher:
     required: true
+    type: string
 runs:
   using: "composite"
   steps:
@@ -13,7 +14,7 @@ runs:
   - name: Find Usages
     shell: bash
     run: |
-      git grep -E ${{ $inputs.matcher }} -- '*.py' |
+      git grep -E ${{ inputs.matcher }} -- '*.py' |
       python main.py |
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
