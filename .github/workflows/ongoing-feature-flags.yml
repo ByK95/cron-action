@@ -1,6 +1,7 @@
 name: "Find Ongoing Feature Flags"
 
 on:
+  push:
   workflow_call:
     inputs:
       matcher:
