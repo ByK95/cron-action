@@ -5,9 +5,17 @@ inputs:
     required: true
     description: "regex pattern of any code that will be matched"
     type: string
+  identifier_matcher:
+    required: true
+    description: "regex pattern of identifier that is already matched matched"
+    type: string
   file_type:
     required: true
     description: "File type that search will happen ex: py"
+    type: string
+  cutoff_in_days:
+    required: true
+    description: "date parameter that will notify should be int value as string "
     type: string
 runs:
   using: "composite"
@@ -20,7 +28,7 @@ runs:
     shell: bash
     run: |
       git grep -E "${{ inputs.matcher }}" -- '*.${{ inputs.file_type }}' |
-      python main.py |
+      python find.py ${{ inputs.identifier_matcher }} |
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
-      python parse.py
+      python parse_and_notify.py ${{ inputs.cutoff_in_days }}
