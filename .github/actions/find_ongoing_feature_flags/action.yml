@@ -12,4 +12,6 @@ runs:
       python-version: '3.10'
   - name: Find Usages
     shell: bash
-    run: python my_script.py
+    run: |
+    git grep -E "is_upcoming_features_enabled\('ENG-[0-9]{0,6}'\)" -- '*.py' |
+    python ../main.py
