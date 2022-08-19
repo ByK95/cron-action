@@ -36,4 +36,4 @@ jobs:
           file_type: "py"
           cutoff_in_days: "20"
       - run:
-          echo "${{ steps.search.outputs.filtered }}"
+          echo ${{ steps.search.outputs.filtered }}
