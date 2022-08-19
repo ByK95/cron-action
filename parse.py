@@ -20,6 +20,7 @@ if __name__ == '__main__':
 
     NOW = datetime.now(timezone.utc)
     for index, time in enumerate(times):
+        print(tasks[index], times[index])
         timediff = NOW - time
         if timediff > CUTOFF:
             send_slack_notification(tasks[index])
