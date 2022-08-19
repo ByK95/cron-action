@@ -36,5 +36,5 @@ runs:
       tac |
       python parse_and_notify.py "${{ inputs.cutoff_in_days }}" |
       read result
-      echo "$result"
+#      echo "$result"
 #      Write-Output "::set-output name=result::$result"
