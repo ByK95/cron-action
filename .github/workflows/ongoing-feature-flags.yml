@@ -1,11 +1,23 @@
 name: "Find Ongoing Feature Flags"
 
 on:
-  push:
   workflow_call:
     inputs:
       matcher:
         required: true
+        description: "regex pattern of any code that will be matched"
+        type: string
+      identifier_matcher:
+        required: true
+        description: "regex pattern of identifier that is already matched matched"
+        type: string
+      file_type:
+        required: true
+        description: "File type that search will happen ex: py"
+        type: string
+      cutoff_in_days:
+        required: true
+        description: "date parameter that will notify should be int value as string "
         type: string
 
 jobs:
@@ -15,7 +27,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/find_ongoing_feature_flags
         with:
-          matcher: "is_upcoming_features_enabled\\('ENG-[0-9]{0,6}'\\)"
-          identifier_matcher: "ENG-\\d{0,6}"
-          file_type: "py"
-          cutoff_in_days: "20"
+          matcher: ${{ inputs.matcher }}
+          identifier_matcher: ${{ inputs.identifier_matcher }}
+          file_type: ${{ inputs.file_type }}
+          cutoff_in_days: ${{ inputs.cutoff_in_days }}
