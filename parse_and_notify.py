@@ -33,3 +33,5 @@ if __name__ == '__main__':
 
     print("::set-output name=filtered::{}".format("\n".join(filtered)))
     print("::set-output name=expired::{}".format("\n".join(expired)))
+    print("\n".join(filtered))
+    print("\n".join(expired))
