@@ -22,6 +22,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+  - id: search
+    shell: bash
+    run: echo "::set-output name=result::$var"
   - uses: actions/checkout@v3
   - uses: actions/setup-python@v4
     with:
@@ -34,6 +37,3 @@ runs:
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
       result=`python parse_and_notify.py "${{ inputs.cutoff_in_days }}"`
-  - id: search
-    shell: bash
-    run: echo "::set-output name=result::$var"
