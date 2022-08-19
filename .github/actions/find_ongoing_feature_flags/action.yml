@@ -34,7 +34,6 @@ runs:
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
       result=`python parse_and_notify.py "${{ inputs.cutoff_in_days }}"`
-  - name: Assign results
-    id: search
+  - id: search
     shell: bash
     run: echo "::set-output name=result::$var"
