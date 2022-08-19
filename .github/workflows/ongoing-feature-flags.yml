@@ -20,6 +20,8 @@ on:
         required: true
         description: "date parameter that will notify should be int value as string "
         type: string
+    outputs:
+      results: ${{ steps.search.outputs.result }}
 
 
 jobs:
