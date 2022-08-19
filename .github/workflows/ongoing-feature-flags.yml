@@ -36,4 +36,4 @@ jobs:
           file_type: "py"
           cutoff_in_days: "20"
       - run:
-          echo "${{ needs.cron.outputs.filtered }}"
+          echo "${{ needs.cron.outputs.results }}"
