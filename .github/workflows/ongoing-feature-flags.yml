@@ -20,13 +20,13 @@ on:
         required: true
         description: "date parameter that will notify should be int value as string "
         type: string
-    outputs:
-      results: ${{ steps.search.outputs.result }}
 
 
 jobs:
   cron:
     runs-on: ubuntu-latest
+    outputs:
+      results: ${{ steps.search.outputs.result }}
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/find_ongoing_feature_flags
