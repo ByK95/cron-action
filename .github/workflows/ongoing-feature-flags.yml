@@ -15,4 +15,4 @@ jobs:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/find_ongoing_feature_flags
         with:
-          matcher: ${{ inputs.matcher }}
+          matcher: "is_upcoming_features_enabled\('ENG-[0-9]{0,6}'\)"
