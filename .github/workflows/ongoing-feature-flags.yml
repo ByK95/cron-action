@@ -12,6 +12,6 @@ jobs:
   cron:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/find-ongoing-feature-flags
+      - uses: ./.github/actions/find_ongoing_feature_flags
         with:
           matcher: ${{ inputs.matcher }}
