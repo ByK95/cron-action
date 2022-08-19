@@ -3,6 +3,11 @@ description: ""
 inputs:
   matcher:
     required: true
+    description: "regex pattern of any code that will be matched"
+    type: string
+  file_type:
+    required: true
+    description: "File type that search will happen ex: py"
     type: string
 runs:
   using: "composite"
@@ -14,7 +19,7 @@ runs:
   - name: Find Usages
     shell: bash
     run: |
-      git grep -E ${{ inputs.matcher }} -- '*.py' |
+      git grep -E "${{ inputs.matcher }}" -- '*.${{ inputs.file_type }}' |
       python main.py |
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
