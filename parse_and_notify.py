@@ -17,7 +17,7 @@ if __name__ == '__main__':
         lines.append(line)
 
     size = int(len(lines) / 2)
-    times = [time[time.find('(')+1:time.find(')')] for time in lines[:size]]
+    times = [time[time.find('(') + 1:time.find(')')] for time in lines[:size]]
     times = [datetime.strptime(time, "%a %b %d %H:%M:%S %Y %z") for time in times]
     tasks = [task.replace('\n', '') for task in lines[size:]]
 
@@ -28,5 +28,3 @@ if __name__ == '__main__':
         if timediff > CUTOFF:
             print("Findings that have passed cutoff time", tasks[index], times[index])
             send_slack_notification(tasks[index])
-
-

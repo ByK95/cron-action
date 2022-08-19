@@ -17,8 +17,6 @@ class CaptureTheFlag:
         return self.captures
 
 
-# is_upcoming_features_enabled('ENG-12345')
-
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Missing matcher argument")
