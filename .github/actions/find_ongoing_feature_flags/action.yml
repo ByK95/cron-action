@@ -13,7 +13,7 @@ runs:
   - name: Find Usages
     shell: bash
     run: |
-      git grep -E {{ $input.matcher }} -- '*.py' |
+      git grep -E ${{ $input.matcher }} -- '*.py' |
       python main.py |
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
