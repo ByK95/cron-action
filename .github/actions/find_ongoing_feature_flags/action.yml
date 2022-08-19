@@ -35,6 +35,6 @@ runs:
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
       python parse_and_notify.py "${{ inputs.cutoff_in_days }}" | 
-      read result
+      result=$(</dev/stdin)
       echo "$result"
 #      Write-Output "::set-output name=result::$result"
