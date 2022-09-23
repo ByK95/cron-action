@@ -25,6 +25,6 @@ if __name__ == '__main__':
         if timediff > CUTOFF:
             expired.append("{} {}".format(tasks[index], times[index]))
 
-    print("::set-output name=results::{}".format(",".join(expired)), flush=True)
     print("::set-output name=filtered::{}".format(",".join(filtered)), flush=True)
+    print("::set-output name=results::{}".format(",".join(expired)), flush=True)
 
