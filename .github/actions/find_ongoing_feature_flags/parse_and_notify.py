@@ -16,7 +16,8 @@ if __name__ == '__main__':
     authors = []
     for line in lines[:size]:
         author, time = line.split('-')
-        times.append(datetime.strptime(time, "(%a %b %d %H:%M:%S %Y %z)"))
+        time = time[time.find('(') + 1:time.find(')')]
+        times.append(datetime.strptime(time, "%a %b %d %H:%M:%S %Y %z"))
         authors.append(author)
 
     tasks = [task.replace('\n', '') for task in lines[size:]]
