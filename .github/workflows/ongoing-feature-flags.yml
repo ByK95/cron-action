@@ -26,7 +26,7 @@ jobs:
   cron:
     runs-on: ubuntu-latest
     outputs:
-      results: ${{ steps.another.outputs.test }}
+      results: ${{ steps.search.another.outputs.test }}
     steps:
       - uses: actions/checkout@v3
       - id: search
@@ -36,6 +36,7 @@ jobs:
           identifier_matcher: "ENG-\\d{0,6}"
           file_type: "py"
           cutoff_in_days: "20"
+        run: echo "::set-output name=test::world"
   print:
     runs-on: ubuntu-latest
     needs: cron
