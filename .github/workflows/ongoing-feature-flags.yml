@@ -41,4 +41,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: cron
     steps:
-    - run: echo ${{needs.cron.outputs.filtered}} ${{needs.cron.outputs.expired}}
+    - run: echo ${{needs.cron.outputs.filtered}}
+    - run: echo ${{needs.cron.outputs.expired}}
