@@ -31,7 +31,7 @@ runs:
     shell: bash
     run: |
       git grep -E "${{ inputs.matcher }}" -- '*.${{ inputs.file_type }}' |
-      python find.py "${{ inputs.identifier_matcher }}" |
+      python ByK95/cron-action/find.py "${{ inputs.identifier_matcher }}" |
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
-      python parse_and_notify.py "${{ inputs.cutoff_in_days }}"
+      python ByK95/cron-action/parse_and_notify.py "${{ inputs.cutoff_in_days }}"
