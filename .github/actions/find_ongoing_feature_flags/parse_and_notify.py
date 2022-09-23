@@ -12,18 +12,23 @@ if __name__ == '__main__':
         lines.append(line)
 
     size = int(len(lines) / 2)
-    times = [time[time.find('(') + 1:time.find(')')] for time in lines[:size]]
-    times = [datetime.strptime(time, "%a %b %d %H:%M:%S %Y %z") for time in times]
+    times = []
+    authors = []
+    for line in lines[:size]:
+        author, time = line.split('-')
+        times.append(datetime.strptime(time, "(%a %b %d %H:%M:%S %Y %z)"))
+        authors.append(author)
+
     tasks = [task.replace('\n', '') for task in lines[size:]]
 
     filtered = []
     expired = []
     NOW = datetime.now(timezone.utc)
     for index, time in enumerate(times):
-        filtered.append("{} {}".format(tasks[index], times[index]))
+        filtered.append("{} {}".format(authors[index], tasks[index]))
         timediff = NOW - time
         if timediff > CUTOFF:
-            expired.append("{} {}".format(tasks[index], times[index]))
+            expired.append("{} {}".format(authors[index], tasks[index]))
 
     print("::set-output name=filtered::{}".format(",".join(filtered)), flush=True)
     print("::set-output name=results::{}".format(",".join(expired)), flush=True)
