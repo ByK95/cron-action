@@ -26,6 +26,7 @@ jobs:
   cron:
     runs-on: ubuntu-latest
     outputs:
+      filtered: ${{ steps.search.outputs.filtered }}
       expired: ${{ steps.search.outputs.expired }}
     steps:
       - uses: actions/checkout@v3
