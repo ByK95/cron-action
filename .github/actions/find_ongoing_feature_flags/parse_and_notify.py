@@ -31,7 +31,7 @@ if __name__ == '__main__':
             expired.append("{} {}".format(tasks[index], times[index]))
             send_slack_notification(tasks[index])
 
-    print("::set-output name=filtered::{}".format("\n".join(filtered)))
-    print("::set-output name=expired::{}".format("\n".join(expired)))
+    print("::set-output name=filtered::{}".format(",".join(filtered)))
+    print("::set-output name=expired::{}".format(",".join(expired)))
     print("\n".join(filtered))
     print("\n".join(expired))

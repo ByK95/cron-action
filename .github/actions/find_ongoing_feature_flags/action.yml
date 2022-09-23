@@ -20,14 +20,11 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - id: search
-    shell: bash
-    run: echo "::set-output name=result::$var"
   - uses: actions/checkout@v3
   - uses: actions/setup-python@v4
     with:
       python-version: '3.10'
-  - name: Find Usages
+  - id: search
     shell: bash
     run: |
       git grep -E "${{ inputs.matcher }}" -- '*.${{ inputs.file_type }}' |
