@@ -22,7 +22,7 @@ outputs:
     description: "Expired matches"
     value: ${{ steps.search.outputs.expired }}
   filtered:
-    description: "Expired matches"
+    description: "Filtered matches"
     value: ${{ steps.search.outputs.filtered }}
 runs:
   using: "composite"
