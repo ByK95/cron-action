@@ -1,11 +1,6 @@
 import sys
 from datetime import datetime, timezone, timedelta
 
-
-def send_slack_notification(task_name):
-    print("slack notification send", task_name)
-
-
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Missing difference delta as (days: int) argument")
@@ -29,6 +24,5 @@ if __name__ == '__main__':
         timediff = NOW - time
         if timediff > CUTOFF:
             expired.append("{} {}".format(tasks[index], times[index]))
-            send_slack_notification(tasks[index])
 
     print("::set-output name=expired::{}".format(",".join(expired)), flush=True)
