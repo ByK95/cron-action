@@ -18,9 +18,9 @@ inputs:
     description: "date parameter that will notify should be int value as string "
     type: string
 outputs:
-  expired:
+  results:
     description: "Expired matches"
-    value: ${{ steps.search.outputs.expired }}
+    value: ${{ steps.search.outputs.results }}
   filtered:
     description: "Filtered matches"
     value: ${{ steps.search.outputs.filtered }}
