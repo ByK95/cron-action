@@ -32,3 +32,5 @@ runs:
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n') |
       tac |
       python ${{ github.action_path }}/parse_and_notify.py "${{ inputs.cutoff_in_days }}"
+  - id: another
+    run: echo "::set-output name=test::world"
