@@ -20,6 +20,9 @@ inputs:
 outputs:
   expired:
     description: "Expired matches"
+    value: ${{ steps.search.outputs.expired }}
+  filtered:
+    description: "Filtered matches"
     value: ${{ steps.search.outputs.filtered }}
 runs:
   using: "composite"
@@ -36,6 +39,3 @@ runs:
       tac |
       python ${{ github.action_path }}/parse_and_notify.py "${{ inputs.cutoff_in_days }}"
     shell: bash
-  - id: another
-    shell: bash
-    run: echo "::set-output name=test::world"
