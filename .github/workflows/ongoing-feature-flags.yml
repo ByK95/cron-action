@@ -26,7 +26,7 @@ jobs:
   cron:
     runs-on: ubuntu-latest
     outputs:
-      results: ${{ steps.search.outputs.filtered }}
+      results: ${{ steps.search.outputs.expired }}
     steps:
       - uses: actions/checkout@v3
       - uses: ByK95/cron-action/.github/actions/find_ongoing_feature_flags@master
