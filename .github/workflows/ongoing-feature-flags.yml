@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: search
-      - uses: ByK95/cron-action/.github/actions/find_ongoing_feature_flags@master
+        uses: ByK95/cron-action/.github/actions/find_ongoing_feature_flags@master
         with:
           matcher: "is_upcoming_features_enabled\\('ENG-[0-9]{0,6}'\\)"
           identifier_matcher: "ENG-\\d{0,6}"
