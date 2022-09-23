@@ -35,5 +35,8 @@ jobs:
           identifier_matcher: "ENG-\\d{0,6}"
           file_type: "py"
           cutoff_in_days: "20"
-      - run:
-          echo "${{ needs.cron.outputs.results }}"
+  print:
+    runs-on: ubuntu-latest
+    needs: cron
+    steps:
+      - run: echo ${{needs.cron.outputs.expired}}

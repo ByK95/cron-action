@@ -17,6 +17,8 @@ inputs:
     required: true
     description: "date parameter that will notify should be int value as string "
     type: string
+outputs:
+  expired: ${{ steps.search.outputs.expired }}
 runs:
   using: "composite"
   steps:
