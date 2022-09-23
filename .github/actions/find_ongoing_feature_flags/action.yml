@@ -33,4 +33,5 @@ runs:
       tac |
       python ${{ github.action_path }}/parse_and_notify.py "${{ inputs.cutoff_in_days }}"
   - id: another
+    shell: bash
     run: echo "::set-output name=test::world"
