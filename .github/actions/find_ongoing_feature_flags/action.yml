@@ -41,9 +41,3 @@ runs:
       tac |
       python ${{ github.action_path }}/parse_and_notify.py "${{ inputs.cutoff_in_days }}"
     shell: bash
-  - id: test
-    run: |
-      git grep -E "${{ inputs.matcher }}" -- '*.${{ inputs.file_type }}' |
-      python ${{ github.action_path }}/find.py "${{ inputs.identifier_matcher }}" |
-      tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'(%cd) %n')
-    shell: bash

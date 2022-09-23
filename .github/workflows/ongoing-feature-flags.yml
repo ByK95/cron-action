@@ -33,13 +33,7 @@ jobs:
       - id: search
         uses: ByK95/cron-action/.github/actions/find_ongoing_feature_flags@master
         with:
-          matcher: "is_upcoming_features_enabled\\('ENG-[0-9]{0,6}'\\)"
-          identifier_matcher: "ENG-\\d{0,6}"
-          file_type: "py"
-          cutoff_in_days: "20"
-  job2:
-    runs-on: ubuntu-latest
-    needs: cron
-    steps:
-    - run: echo ${{ needs.cron.outputs.results }}
-    - run: echo ${{ needs.cron.outputs.filtered }}
+          matcher: ${{ inputs.matcher }}
+          identifier_matcher: ${{ inputs.identifier_matcher }}
+          file_type: ${{ inputs.file_type }}
+          cutoff_in_days: ${{ inputs.cutoff_in_days }}
