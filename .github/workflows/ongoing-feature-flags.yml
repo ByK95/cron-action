@@ -26,7 +26,7 @@ jobs:
   cron:
     runs-on: ubuntu-latest
     outputs:
-      results: ${{ steps.search.outputs.expired }}
+      results: ${{ steps.another.outputs.test }}
     steps:
       - uses: actions/checkout@v3
       - id: search
