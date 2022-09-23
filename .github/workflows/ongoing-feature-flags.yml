@@ -28,6 +28,7 @@ jobs:
     outputs:
       output1: ${{ steps.step1.outputs.test }}
       output2: ${{ steps.step2.outputs.test }}
+      output3: ${{ steps.search.outputs.expired }}
     steps:
       - uses: actions/checkout@v3
       - id: search
@@ -46,3 +47,4 @@ jobs:
     needs: cron
     steps:
       - run: echo ${{needs.cron.outputs.output1}} ${{needs.cron.outputs.output2}}
+      - run: echo ${{needs.cron.outputs.output3}}
