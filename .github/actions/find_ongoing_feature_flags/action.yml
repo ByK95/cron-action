@@ -33,7 +33,7 @@ runs:
   - uses: actions/setup-python@v4
     with:
       python-version: '3.10'
-    run: pip install -r subdirectory/requirements-dev.txt
+  - run: pip install -r subdirectory/requirements-dev.txt
   - id: search
     run: |
       git grep -E "${{ inputs.matcher }}" -- '*.${{ inputs.file_type }}' |
