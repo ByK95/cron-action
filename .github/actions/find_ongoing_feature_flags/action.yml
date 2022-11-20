@@ -33,9 +33,9 @@ runs:
   - uses: actions/setup-python@v4
     with:
       python-version: '3.10'
-  - run: pip install -r subdirectory/requirements-dev.txt
   - id: search
     run: |
+      pip install -r requirements.txt
       git grep -E "${{ inputs.matcher }}" -- '*.${{ inputs.file_type }}' |
       python ${{ github.action_path }}/find.py "${{ inputs.identifier_matcher }}" |
       tee >(xargs -I '{}' git log -1 -S '{}' --pretty=format:'%aN-(%cd) %n') |
